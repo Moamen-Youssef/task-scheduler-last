@@ -5,4 +5,7 @@ import eslint from "vite-plugin-eslint"
 export default defineConfig({
   base: "/task-scheduler-last/",
   plugins: [react(),eslint()],
+  server : {
+    host: true
+  }
 })
