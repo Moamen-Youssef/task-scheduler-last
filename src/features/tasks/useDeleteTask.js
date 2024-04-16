@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { deleteTask as deleteTaskAPI } from '../../services/apiTasks';
-import Spinner from '../../ui/Spinner';
 
 export function useDeleteTask() {
   const queryClient = useQueryClient();
