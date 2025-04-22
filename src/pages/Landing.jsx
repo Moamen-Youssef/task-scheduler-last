@@ -6,7 +6,7 @@ function Landing() {
 
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 99%;
     z-index: -1;
   `;
   const LandingText = styled.h1`

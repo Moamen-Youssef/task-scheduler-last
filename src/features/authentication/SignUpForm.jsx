@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useForm } from 'react-hook-form';
-import Form from '../../ui/Form';
-import FormRow from '../../ui/FormRow';
-import Input from '../../ui/Input';
-import Button from '../../ui/Button';
-import { useSignup } from './useSignup';
-import SpinnerMini from '../../ui/SpinnerMini';
-import { useUpdateUserEmail, useUpdateUserName } from '../user/useUpdateUser';
+import { useForm } from "react-hook-form";
+import Form from "../../ui/Form";
+import FormRow from "../../ui/FormRow";
+import Input from "../../ui/Input";
+import Button from "../../ui/Button";
+import { useSignup } from "./useSignup";
+import SpinnerMini from "../../ui/SpinnerMini";
+import { useUpdateUserEmail, useUpdateUserName } from "../user/useUpdateUser";
 
 function SignUpForm({ currentUser = {} }) {
   const { isLoading, signUp } = useSignup();
@@ -57,58 +57,58 @@ function SignUpForm({ currentUser = {} }) {
   return (
     <Form
       onSubmit={handleSubmit(onSubmit)}
-      className='min-w-[26rem] sm:min-w-[38rem]'
+      className="min-w-[26rem] sm:min-w-[38rem]"
     >
-      <FormRow label='first name *' error={errors?.firstName?.message}>
+      <FormRow label="first name *" error={errors?.firstName?.message}>
         <Input
-          type='text'
-          id='firstName'
-          {...register('firstName', {
-            required: 'required field !',
+          type="text"
+          id="firstName"
+          {...register("firstName", {
+            required: "required field !",
             validate: (value) =>
-              value.length >= 3 || 'must be 3 characters or more !',
+              value.length >= 3 || "must be 3 characters or more !",
           })}
         />
       </FormRow>
-      <FormRow label='last name'>
+      <FormRow label="last name">
         <Input
-          type='text'
-          placeholder='optional..'
-          id='lastName'
-          {...register('lastName')}
+          type="text"
+          placeholder="optional.."
+          id="lastName"
+          {...register("lastName")}
         />
       </FormRow>
-      <FormRow label='email *' error={errors?.email?.message}>
+      <FormRow label="email *" error={errors?.email?.message}>
         <Input
-          type='email'
-          placeholder='your email address'
-          id='email'
-          {...register('email', { required: 'must sign with a valid email !' })}
+          type="email"
+          placeholder="your email address"
+          id="email"
+          {...register("email", { required: "must sign with a valid email !" })}
         />
       </FormRow>
       {!isCurrentUser && (
         <>
-          <FormRow label='password *' error={errors?.password?.message}>
+          <FormRow label="password *" error={errors?.password?.message}>
             <Input
-              type='password'
-              id='password'
-              {...register('password', {
-                required: 'required field !',
+              type="password"
+              id="password"
+              {...register("password", {
+                required: "required field !",
                 validate: (value) =>
                   value.length >= 8 ||
-                  ' create a password with at least 8 characters',
+                  " create a password with at least 8 characters",
               })}
             />
           </FormRow>
           <FormRow
-            label='confirm password *'
+            label="confirm password *"
             error={errors?.cofirmPassword?.message}
           >
             <Input
-              type='password'
-              id='confirmPass'
-              {...register('cofirmPassword', {
-                required: 'required field !',
+              type="password"
+              id="confirmPass"
+              {...register("cofirmPassword", {
+                required: "required field !",
                 validate: (value) =>
                   value === getValues().password || "passwords don't match",
               })}
@@ -120,9 +120,9 @@ function SignUpForm({ currentUser = {} }) {
         {isWorking ? (
           <SpinnerMini />
         ) : isCurrentUser ? (
-          'Update '
+          "Update "
         ) : (
-          'Create Account'
+          "Create Account"
         )}
       </Button>
     </Form>

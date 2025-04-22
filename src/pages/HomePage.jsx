@@ -3,7 +3,6 @@ import Tasks from "../features/tasks/Tasks";
 import styled from "styled-components";
 import { HiOutlineXCircle } from "react-icons/hi2";
 import { useActualUserTasks } from "../features/tasks/useActualUserTasks";
-import { formatDate } from "../utils/helpers";
 
 const NotFoundText = styled.p`
   padding: 0.6rem;
