@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 // d
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
-import { useNavigate } from 'react-router-dom';
-import { useCreateTask } from './useCreateTask';
-import { useEditTask } from './useEditTask';
-import styled from 'styled-components';
-import Form from '../../ui/Form';
-import FormRow from '../../ui/FormRow';
-import Input from '../../ui/Input';
-import Button from '../../ui/Button';
-import { useUser } from '../authentication/useUser';
+import { useNavigate } from "react-router-dom";
+import { useCreateTask } from "./useCreateTask";
+import { useEditTask } from "./useEditTask";
+import styled from "styled-components";
+import Form from "../../ui/Form";
+import FormRow from "../../ui/FormRow";
+import Input from "../../ui/Input";
+import Button from "../../ui/Button";
+import { useUser } from "../authentication/useUser";
 
 const ButtonsBox = styled.div`
   display: flex;
@@ -42,6 +42,7 @@ const TextArea = styled.textarea`
 function AddTaskForm({ closeModal, taskToEdit = {} }) {
   const { id: taskID, status } = taskToEdit;
   const isEditingMode = Boolean(taskID);
+  console.log(taskID);
   const navigate = useNavigate();
   const { register, handleSubmit, formState, reset } = useForm({
     defaultValues: isEditingMode
@@ -60,7 +61,6 @@ function AddTaskForm({ closeModal, taskToEdit = {} }) {
   const { user } = useUser();
   function onSubit(data) {
     if (isEditingMode) {
-
       updateTask({
         newTaskData: {
           created_at: taskToEdit.created_at,
@@ -72,7 +72,7 @@ function AddTaskForm({ closeModal, taskToEdit = {} }) {
     } else {
       createTask({
         userId: user.user.id,
-        status: 'not yet',
+        status: "not yet",
         ...data,
       });
       reset();
@@ -82,62 +82,62 @@ function AddTaskForm({ closeModal, taskToEdit = {} }) {
   return (
     <Form
       onSubmit={handleSubmit(onSubit)}
-      type={isEditingMode ? 'regular' : 'modal'}
+      type={isEditingMode ? "regular" : "modal"}
     >
-      <FormRow label='Title *' error={errors?.title?.message}>
+      <FormRow label="Title *" error={errors?.title?.message}>
         <Input
-          type='text'
-          id='title'
-          {...register('title', { required: 'your task should have a title' })}
+          type="text"
+          id="title"
+          {...register("title", { required: "your task should have a title" })}
         />
       </FormRow>
-      <FormRow label='description'>
+      <FormRow label="description">
         <TextArea
-          type='text'
-          placeholder='optinal..'
-          id='Description'
-          {...register('description')}
+          type="text"
+          placeholder="optinal.."
+          id="Description"
+          {...register("description")}
         ></TextArea>
       </FormRow>
-      <FormRow label='priority *' error={errors?.priority?.message}>
+      <FormRow label="priority *" error={errors?.priority?.message}>
         <Select
-          id='Priority'
-          {...register('priority', {
+          id="Priority"
+          {...register("priority", {
             validate: (value) =>
-              value !== '' || "you should set the task's priority",
+              value !== "" || "you should set the task's priority",
           })}
         >
-          <option value=''>Set prioroty</option>
-          <option value='low'>low</option>
-          <option value='medium'>medium</option>
-          <option value='high'>high</option>
+          <option value="">Set prioroty</option>
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
         </Select>
       </FormRow>
-      <FormRow label='Set due data *' error={errors?.dueDate?.message}>
+      <FormRow label="Set due data *" error={errors?.dueDate?.message}>
         <Input
-          type='datetime-local'
-          id='dueDate'
-          {...register('dueDate', {
-            required: 'you should set your due date',
+          type="datetime-local"
+          id="dueDate"
+          {...register("dueDate", {
+            required: "you should set your due date",
           })}
         />
       </FormRow>
       {isEditingMode ? (
-        <FormRow label='Task Status'>
-          <Select id='status' {...register('status')} defaultValue={status}>
-            <option value='done'>done</option>
-            <option value='not yet'>not yet</option>
+        <FormRow label="Task Status">
+          <Select id="status" {...register("status")} defaultValue={status}>
+            <option value="done">done</option>
+            <option value="not yet">not yet</option>
           </Select>
         </FormRow>
       ) : null}
       <ButtonsBox>
         <Button
-          type='submit'
+          type="submit"
           disabled={isEditingMode ? isUpdating : isCreating}
         >
-          {isEditingMode ? 'Editt Task' : 'Add'}
+          {isEditingMode ? "Editt Task" : "Add"}
         </Button>
-        <Button type='reset' variation='secondary'>
+        <Button type="reset" variation="secondary">
           reset
         </Button>
       </ButtonsBox>
