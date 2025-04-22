@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function Landing() {
   const StyledLandingCover = styled.div`
-    background-image: url('../../public/background.jpeg');
-    height: 100vh;
+    background-image: url("background.jpeg");
+
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -22,7 +22,7 @@ function Landing() {
   `;
 
   return (
-    <StyledLandingCover className='text-5xl '>
+    <StyledLandingCover className="text-5xl ">
       <LandingText>Streamline your day with our task scheduler</LandingText>
     </StyledLandingCover>
   );
