@@ -9,8 +9,7 @@ const StyledAppLayout = styled.div`
   overflow: hidden;
 `;
 const Main = styled.main`
-  height: 91.5vh;
-  overflow: hidden;
+  height: 90.5vh;
 `;
 
 function AppLayout({ isAuthenticated }) {

@@ -42,7 +42,6 @@ const TextArea = styled.textarea`
 function AddTaskForm({ closeModal, taskToEdit = {} }) {
   const { id: taskID, status } = taskToEdit;
   const isEditingMode = Boolean(taskID);
-  console.log(taskID);
   const navigate = useNavigate();
   const { register, handleSubmit, formState, reset } = useForm({
     defaultValues: isEditingMode
@@ -60,6 +59,7 @@ function AddTaskForm({ closeModal, taskToEdit = {} }) {
   const { updateTask, isUpdating } = useEditTask(taskID);
   const { user } = useUser();
   function onSubit(data) {
+    console.log(data.dueDate);
     if (isEditingMode) {
       updateTask({
         newTaskData: {

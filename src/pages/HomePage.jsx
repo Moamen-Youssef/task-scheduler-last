@@ -1,8 +1,9 @@
-import SearchTask from '../features/tasks/SearchTask';
-import Tasks from '../features/tasks/Tasks';
-import styled from 'styled-components';
-import { HiOutlineXCircle } from 'react-icons/hi2';
-import { useActualUserTasks } from '../features/tasks/useActualUserTasks';
+import SearchTask from "../features/tasks/SearchTask";
+import Tasks from "../features/tasks/Tasks";
+import styled from "styled-components";
+import { HiOutlineXCircle } from "react-icons/hi2";
+import { useActualUserTasks } from "../features/tasks/useActualUserTasks";
+import { formatDate } from "../utils/helpers";
 
 const NotFoundText = styled.p`
   padding: 0.6rem;
@@ -25,11 +26,10 @@ const NotFoundText = styled.p`
 `;
 
 function HomePage() {
-  const {  userTasks, searchResultedTasks, setNewResultedTasks, isLoading  } =
+  const { userTasks, searchResultedTasks, setNewResultedTasks, isLoading } =
     useActualUserTasks();
   // resulted from the search
-
-
+  console.log(userTasks);
   return (
     <>
       <SearchTask tasks={userTasks} setTasks={setNewResultedTasks} />
@@ -38,7 +38,7 @@ function HomePage() {
        "not found" message will appear to the user ,
        and if there is nothing to search 
       about the user tasks will be rendered normally */}
-      {searchResultedTasks?.status === 'not found' ? (
+      {searchResultedTasks?.status === "not found" ? (
         <NotFoundText>
           <span>
             <HiOutlineXCircle />
@@ -47,7 +47,10 @@ function HomePage() {
           found. Please try a valid task name
         </NotFoundText>
       ) : (
-        <Tasks tasks={searchResultedTasks ? searchResultedTasks : userTasks} isTasksLoading={isLoading}/>
+        <Tasks
+          tasks={searchResultedTasks ? searchResultedTasks : userTasks}
+          isTasksLoading={isLoading}
+        />
       )}
     </>
   );
